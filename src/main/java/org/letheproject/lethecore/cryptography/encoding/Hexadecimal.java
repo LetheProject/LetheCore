@@ -1,4 +1,4 @@
-package org.letheproject.lethecore.encoding;
+package org.letheproject.lethecore.cryptography.encoding;
 
 import java.nio.charset.StandardCharsets;
 

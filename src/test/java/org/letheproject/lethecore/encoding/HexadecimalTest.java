@@ -1,6 +1,7 @@
 package org.letheproject.lethecore.encoding;
 
 import org.junit.jupiter.api.Test;
+import org.letheproject.lethecore.cryptography.encoding.Hexadecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
