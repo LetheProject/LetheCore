@@ -14,8 +14,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class AES256 implements Encryptor {
-    private SecureRandom random;
-    private Cipher cipher;
+    private final SecureRandom random;
+    private final Cipher cipher;
 
     public AES256(SecureRandom random) {
         this.random = random;
