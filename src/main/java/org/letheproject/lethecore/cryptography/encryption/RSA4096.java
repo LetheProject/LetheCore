@@ -55,8 +55,7 @@ public class RSA4096 implements Encryptor {
         byte[] iv = generateIV();
         try {
             cipher.init(Cipher.ENCRYPT_MODE, toPublicKey(key));
-            byte[] encrypted = cipher.doFinal(ArrayOperations.concatenate(iv, data));
-            return ArrayOperations.concatenate(iv, encrypted);
+            return cipher.doFinal(ArrayOperations.concatenate(iv, data));
         }
         catch (IllegalBlockSizeException | BadPaddingException | InvalidKeyException e) {
             throw new RuntimeException(e);
@@ -66,10 +65,9 @@ public class RSA4096 implements Encryptor {
 
     @Override
     public byte[] decrypt(byte[] data, byte[] key) {
-        byte[] encrypted = ArrayOperations.extract(data, 16, data.length);
         try {
             cipher.init(Cipher.DECRYPT_MODE, toPrivateKey(key));
-            byte[] decrypted = cipher.doFinal(encrypted);
+            byte[] decrypted = cipher.doFinal(data);
             return ArrayOperations.extract(decrypted, 16, decrypted.length);
         }
         catch (IllegalBlockSizeException | BadPaddingException | InvalidKeyException e) {
