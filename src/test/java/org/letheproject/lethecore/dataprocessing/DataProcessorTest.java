@@ -21,7 +21,6 @@ class DataProcessorTest {
         DataProcessor dataProcessor = new DataProcessor()
                 .addEncryptor(new AES256(random), aesKey)
                 .addCompressor(new Deflate(4));
-        byte[] processed = dataProcessor.forward(data);
         byte[] unprocessed = dataProcessor.backward(dataProcessor.forward(data));
         assertArrayEquals(data, unprocessed);
     }
