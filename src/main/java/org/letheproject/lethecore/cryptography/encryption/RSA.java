@@ -11,11 +11,11 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-public class RSA4096 implements Encryptor {
+public class RSA implements Encryptor {
     private final SecureRandom random;
     private final Cipher cipher;
 
-    public RSA4096(SecureRandom random) {
+    public RSA(SecureRandom random) {
         this.random = random;
         try {
             this.cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding");

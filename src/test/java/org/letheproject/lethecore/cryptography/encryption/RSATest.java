@@ -7,12 +7,12 @@ import java.security.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RSA4096Test {
+class RSATest {
 
     @Test
     void encryptAndDecrypt() {
         SecureRandom random = new SecureRandom();
-        RSA4096 rsa4096 = new RSA4096(random);
+        RSA rsa = new RSA(random);
         KeyPair keyPair;
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
@@ -23,8 +23,8 @@ class RSA4096Test {
             throw new RuntimeException(e);
         }
         byte[] data = "Hello World!".getBytes(StandardCharsets.UTF_8);
-        byte[] encrypted = rsa4096.encrypt(data, keyPair.getPublic().getEncoded());
-        byte[] decrypted = rsa4096.decrypt(encrypted, keyPair.getPrivate().getEncoded());
+        byte[] encrypted = rsa.encrypt(data, keyPair.getPublic().getEncoded());
+        byte[] decrypted = rsa.decrypt(encrypted, keyPair.getPrivate().getEncoded());
         assertArrayEquals(data, decrypted);
     }
 }
