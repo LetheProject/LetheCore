@@ -19,6 +19,7 @@ public class Preprocessor {
 
     public Preprocessor addCompressor(Compressor compressor) {
         compressors.add(compressor);
+        return this;
     }
 
     public byte[] apply(byte[] in) {
