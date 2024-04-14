@@ -2,9 +2,6 @@ package org.letheproject.lethecore.cryptography.encryption;
 
 import org.bouncycastle.crypto.engines.SerpentEngine;
 import org.bouncycastle.crypto.params.KeyParameter;
-import org.letheproject.lethecore.ArrayOperations;
-
-import java.security.SecureRandom;
 
 public class Serpent256 implements Encryptor {
     private final SerpentEngine engine;
