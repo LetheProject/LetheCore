@@ -17,6 +17,6 @@ public abstract class Hasher {
      * @return the hash of the concatenated salt and data.
      */
     public byte[] hash(byte[] data, byte[] salt) {
-        return ArrayOperations.concatenate(salt, data);
+        return hash(ArrayOperations.concatenate(salt, data));
     }
 }
