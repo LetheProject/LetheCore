@@ -2,13 +2,12 @@ package org.letheproject.lethecore.cryptography.encryption;
 
 public interface Encryptor {
     /**
-     * Encrypt the data using the key and initial vector.
+     * Encrypt the data using the key.
      * @param data the data to encrypt.
-     * @param iv the initial vector.
      * @param key the key.
      * @return the encrypted data.
      */
-    byte[] encrypt(byte[] data, byte[] iv, byte[] key);
+    byte[] encrypt(byte[] data, byte[] key);
 
     /**
      * Decrypt the provided encrypted data using the key.
