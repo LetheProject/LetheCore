@@ -1,5 +1,7 @@
 package org.letheproject.lethecore.cryptography.encryption;
 
+import org.letheproject.lethecore.ArrayOperations;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -10,6 +12,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+
 public class AES256 implements Encryptor {
     private SecureRandom random;
     private Cipher cipher;
@@ -29,20 +32,6 @@ public class AES256 implements Encryptor {
         return iv;
     }
 
-    private byte[] extract(byte[] data, int start, int end) {
-        int length = end - start;
-        byte[] out = new byte[length];
-        System.arraycopy(data, start, out, 0, length);
-        return out;
-    }
-
-    private byte[] concatenate(byte[] a, byte[] b) {
-        byte[] c = new byte[a.length + b.length];
-        System.arraycopy(a, 0, c, 0, a.length);
-        System.arraycopy(b, 0, c, a.length, b.length);
-        return c;
-    }
-
     private void validateKeyLength(byte[] key) {
         if (key.length != 32) {
             throw new RuntimeException(String.format("Key length for AES256 must be 32 bytes, not %d", key.length));
@@ -58,7 +47,7 @@ public class AES256 implements Encryptor {
         try {
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] encrypted = cipher.doFinal(data);
-            return concatenate(iv, encrypted);
+            return ArrayOperations.concatenate(iv, encrypted);
         }
         catch (InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | InvalidKeyException e) {
             throw new RuntimeException(e);
@@ -68,8 +57,8 @@ public class AES256 implements Encryptor {
     @Override
     public byte[] decrypt(byte[] data, byte[] key) {
         validateKeyLength(key);
-        byte[] iv = extract(data, 0, 16);
-        byte[] encrypted = extract(data, 16, data.length);
+        byte[] iv = ArrayOperations.extract(data, 0, 16);
+        byte[] encrypted = ArrayOperations.extract(data, 16, data.length);
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
         SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
         try {
