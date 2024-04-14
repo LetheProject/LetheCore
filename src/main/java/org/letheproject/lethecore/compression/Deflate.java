@@ -6,8 +6,7 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class Deflate implements Compressor {
-    private final Deflater deflater;
-    private final Inflater inflater;
+    private final int level;
 
     public Deflate(int level) {
         if (level < 0) {
@@ -16,13 +15,13 @@ public class Deflate implements Compressor {
         if (level > 9) {
             throw new RuntimeException(String.format("Compression level for Deflate must be less than 10, not %d", level));
         }
-        this.deflater = new Deflater();
-        this.deflater.setLevel(level);
-        this.inflater = new Inflater();
+        this.level = level;
     }
 
     @Override
     public byte[] compress(byte[] data) {
+        Deflater deflater = new Deflater();
+        deflater.setLevel(level);
         deflater.setInput(data);
         deflater.finish();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -36,6 +35,7 @@ public class Deflate implements Compressor {
 
     @Override
     public byte[] decompress(byte[] data) {
+        Inflater inflater = new Inflater();
         try {
             inflater.setInput(data);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
