@@ -2,9 +2,6 @@ package org.letheproject.lethecore.cryptography.hashing;
 
 import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
 import org.bouncycastle.crypto.params.Argon2Parameters;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-
-import java.nio.charset.StandardCharsets;
 
 public class Argon2ID extends Hasher {
     private static final int HASH_LENGTH = 64;

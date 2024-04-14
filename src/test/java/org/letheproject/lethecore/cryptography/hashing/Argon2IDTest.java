@@ -3,7 +3,6 @@ package org.letheproject.lethecore.cryptography.hashing;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
 
