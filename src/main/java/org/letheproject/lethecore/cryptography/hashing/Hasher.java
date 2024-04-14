@@ -1,5 +1,7 @@
 package org.letheproject.lethecore.cryptography.hashing;
 
+import org.letheproject.lethecore.ArrayOperations;
+
 public abstract class Hasher {
     /**
      * Hash the provided data.
@@ -15,9 +17,6 @@ public abstract class Hasher {
      * @return the hash of the concatenated salt and data.
      */
     public byte[] hash(byte[] data, byte[] salt) {
-        byte[] combined = new byte[data.length + salt.length];
-        System.arraycopy(salt, 0, combined, 0, salt.length);
-        System.arraycopy(data, 0, combined, salt.length, data.length);
-        return hash(combined);
+        return ArrayOperations.concatenate(salt, data);
     }
 }
