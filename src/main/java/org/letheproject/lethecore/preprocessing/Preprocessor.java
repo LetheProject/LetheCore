@@ -4,12 +4,19 @@ import org.bouncycastle.util.Arrays;
 import org.letheproject.lethecore.compression.Compressor;
 import org.letheproject.lethecore.cryptography.encryption.Encryptor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Preprocessor {
-    private List<Encryptor> encryptors;
-    private List<byte[]> encryptorKeys;
-    private List<Compressor> compressors;
+    private final List<Encryptor> encryptors;
+    private final List<byte[]> encryptorKeys;
+    private final List<Compressor> compressors;
+
+    public Preprocessor() {
+        this.encryptors = new ArrayList<>();
+        this.encryptorKeys = new ArrayList<>();
+        this.compressors = new ArrayList<>();
+    }
 
     public Preprocessor addEncryptor(Encryptor encryptor, byte[] key) {
         encryptors.add(encryptor);
