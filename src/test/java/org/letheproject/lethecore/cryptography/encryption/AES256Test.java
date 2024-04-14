@@ -2,13 +2,8 @@ package org.letheproject.lethecore.cryptography.encryption;
 
 import org.junit.jupiter.api.Test;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
-
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
-import java.security.spec.KeySpec;
 
 import static org.junit.jupiter.api.Assertions.*;
 
