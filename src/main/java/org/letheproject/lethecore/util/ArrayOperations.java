@@ -1,4 +1,4 @@
-package org.letheproject.lethecore;
+package org.letheproject.lethecore.util;
 
 public class ArrayOperations {
     public static byte[] extract(byte[] data, int start, int end) {

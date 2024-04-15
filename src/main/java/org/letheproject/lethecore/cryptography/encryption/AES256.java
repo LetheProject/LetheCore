@@ -1,6 +1,6 @@
 package org.letheproject.lethecore.cryptography.encryption;
 
-import org.letheproject.lethecore.ArrayOperations;
+import org.letheproject.lethecore.util.ArrayOperations;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;

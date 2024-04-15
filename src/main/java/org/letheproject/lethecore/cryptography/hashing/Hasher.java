@@ -1,6 +1,6 @@
 package org.letheproject.lethecore.cryptography.hashing;
 
-import org.letheproject.lethecore.ArrayOperations;
+import org.letheproject.lethecore.util.ArrayOperations;
 
 public abstract class Hasher {
     /**
