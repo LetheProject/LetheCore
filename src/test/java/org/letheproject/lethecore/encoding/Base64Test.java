@@ -1,6 +1,7 @@
-package org.letheproject.lethecore.cryptography.encoding;
+package org.letheproject.lethecore.encoding;
 
 import org.junit.jupiter.api.Test;
+import org.letheproject.lethecore.cryptography.encoding.Base64;
 
 import static org.junit.jupiter.api.Assertions.*;
 
