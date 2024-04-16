@@ -17,7 +17,6 @@ public class ShardPublicData {
      * @param ownerUUID the owning node's UUID.
      * @param uuid the UUID of the shard.
      * @param dataProcessingSequenceID the UUID of the data processing sequence used on the corresponding private data.
-     * @param shardIndex the index of this shard, which is used for reconstructing the original file from its shards.
      * @param created when the shard was created.
      * @param position the byte position of the start of the shard in the file
      */
