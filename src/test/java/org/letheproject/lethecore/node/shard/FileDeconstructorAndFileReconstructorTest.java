@@ -57,8 +57,9 @@ class FileDeconstructorAndFileReconstructorTest {
         AES256 aes256 = new AES256(random);
         Deflate deflate = new Deflate(4);
         processor = new DataProcessor()
-                .addCompressor(deflate)
-                .addEncryptor(aes256, aesKey);
+                .addPreCompressor(deflate)
+                .addEncryptor(aes256, aesKey)
+                .addPostCompressor(deflate);
 
         ED448 ed448 = new ED448();
         KeyPairGenerator keyPairGenerator;

@@ -16,7 +16,8 @@ public class DataProcessor {
     private final List<Encryptor> encryptors;
     private final List<byte[]> encryptionKeys;
     private final List<byte[]> decryptionKeys;
-    private final List<Compressor> compressors;
+    private final List<Compressor> preCompressors;
+    private final List<Compressor> postCompressors;
     private final String id;
 
     /**
@@ -26,7 +27,8 @@ public class DataProcessor {
         this.encryptors = new ArrayList<>();
         this.encryptionKeys = new ArrayList<>();
         this.decryptionKeys = new ArrayList<>();
-        this.compressors = new ArrayList<>();
+        this.preCompressors  = new ArrayList<>();
+        this.postCompressors = new ArrayList<>();
         this.id = id;
     }
 
@@ -34,7 +36,8 @@ public class DataProcessor {
         this.encryptors = new ArrayList<>();
         this.encryptionKeys = new ArrayList<>();
         this.decryptionKeys = new ArrayList<>();
-        this.compressors = new ArrayList<>();
+        this.preCompressors  = new ArrayList<>();
+        this.postCompressors = new ArrayList<>();
         this.id = UUID.randomUUID().toString();
     }
 
@@ -59,12 +62,22 @@ public class DataProcessor {
     }
 
     /**
-     * Add a compressor to the sequence.
+     * Add a compressor to the sequence, after encryption.
      * @param compressor the compressor to add.
      * @return this.
      */
-    public DataProcessor addCompressor(Compressor compressor) {
-        compressors.add(compressor);
+    public DataProcessor addPostCompressor(Compressor compressor) {
+        postCompressors.add(compressor);
+        return this;
+    }
+
+    /**
+     * Add a compressor to the sequence, before encryption.
+     * @param compressor the compressor to add.
+     * @return this.
+     */
+    public DataProcessor addPreCompressor(Compressor compressor) {
+        preCompressors.add(compressor);
         return this;
     }
 
@@ -75,13 +88,16 @@ public class DataProcessor {
      */
     public byte[] forward(byte[] in) {
         byte[] out = Arrays.clone(in);
+        for (int i = 0; i < preCompressors.size(); i++) {
+            out = preCompressors.get(i).compress(out);
+        }
         for (int i = 0; i < encryptors.size(); i++) {
             Encryptor encryptor = encryptors.get(i);
             byte[] key = encryptionKeys.get(i);
             out = encryptor.encrypt(out, key);
         }
-        for (int i = 0; i < compressors.size(); i++) {
-            out = compressors.get(i).compress(out);
+        for (int i = 0; i < postCompressors.size(); i++) {
+            out = postCompressors.get(i).compress(out);
         }
         return out;
     }
@@ -93,14 +109,18 @@ public class DataProcessor {
      */
     public byte[] backward(byte[] in) {
         byte[] out = Arrays.clone(in);
-        for (int i = compressors.size() - 1; i >= 0; i--) {
-            Compressor compressor = compressors.get(i);
+        for (int i = postCompressors.size() - 1; i >= 0; i--) {
+            Compressor compressor = postCompressors.get(i);
             out = compressor.decompress(out);
         }
         for (int i = encryptors.size() - 1; i >= 0; i--) {
             Encryptor encryptor = encryptors.get(i);
             byte[] key = decryptionKeys.get(i);
             out = encryptor.decrypt(out, key);
+        }
+        for (int i = preCompressors.size() - 1; i >= 0; i--) {
+            Compressor compressor = preCompressors.get(i);
+            out = compressor.decompress(out);
         }
         return out;
     }

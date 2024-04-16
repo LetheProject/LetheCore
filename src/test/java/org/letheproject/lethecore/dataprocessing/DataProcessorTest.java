@@ -19,8 +19,9 @@ class DataProcessorTest {
 
         byte[] data = "Hello World!".getBytes(StandardCharsets.UTF_8);
         DataProcessor dataProcessor = new DataProcessor()
+                .addPreCompressor(new Deflate(4))
                 .addEncryptor(new AES256(random), aesKey)
-                .addCompressor(new Deflate(4));
+                .addPostCompressor(new Deflate(4));
         byte[] unprocessed = dataProcessor.backward(dataProcessor.forward(data));
         assertArrayEquals(data, unprocessed);
     }
