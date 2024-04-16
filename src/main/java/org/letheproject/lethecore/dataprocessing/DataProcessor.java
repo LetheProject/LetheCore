@@ -6,6 +6,7 @@ import org.letheproject.lethecore.cryptography.encryption.Encryptor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Defines a sequence of data processing events, namely encryption and compression.
@@ -15,14 +16,23 @@ public class DataProcessor {
     private final List<Encryptor> encryptors;
     private final List<byte[]> encryptorKeys;
     private final List<Compressor> compressors;
+    private final String id;
 
     /**
      * Instantiate a DataProcessor.
      */
+    public DataProcessor(String id) {
+        this.encryptors = new ArrayList<>();
+        this.encryptorKeys = new ArrayList<>();
+        this.compressors = new ArrayList<>();
+        this.id = id;
+    }
+
     public DataProcessor() {
         this.encryptors = new ArrayList<>();
         this.encryptorKeys = new ArrayList<>();
         this.compressors = new ArrayList<>();
+        this.id = UUID.randomUUID().toString();
     }
 
     /**
@@ -82,5 +92,9 @@ public class DataProcessor {
             out = encryptor.decrypt(out, key);
         }
         return out;
+    }
+
+    public String getId() {
+        return id;
     }
 }
