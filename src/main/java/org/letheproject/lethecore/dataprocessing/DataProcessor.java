@@ -14,7 +14,8 @@ import java.util.UUID;
  */
 public class DataProcessor {
     private final List<Encryptor> encryptors;
-    private final List<byte[]> encryptorKeys;
+    private final List<byte[]> encryptionKeys;
+    private final List<byte[]> decryptionKeys;
     private final List<Compressor> compressors;
     private final String id;
 
@@ -23,14 +24,16 @@ public class DataProcessor {
      */
     public DataProcessor(String id) {
         this.encryptors = new ArrayList<>();
-        this.encryptorKeys = new ArrayList<>();
+        this.encryptionKeys = new ArrayList<>();
+        this.decryptionKeys = new ArrayList<>();
         this.compressors = new ArrayList<>();
         this.id = id;
     }
 
     public DataProcessor() {
         this.encryptors = new ArrayList<>();
-        this.encryptorKeys = new ArrayList<>();
+        this.encryptionKeys = new ArrayList<>();
+        this.decryptionKeys = new ArrayList<>();
         this.compressors = new ArrayList<>();
         this.id = UUID.randomUUID().toString();
     }
@@ -43,7 +46,15 @@ public class DataProcessor {
      */
     public DataProcessor addEncryptor(Encryptor encryptor, byte[] key) {
         encryptors.add(encryptor);
-        encryptorKeys.add(key);
+        encryptionKeys.add(key);
+        decryptionKeys.add(key);
+        return this;
+    }
+
+    public DataProcessor addEncryptor(Encryptor encryptor, byte[] encryptionKey, byte[] decryptionKey) {
+        encryptors.add(encryptor);
+        encryptionKeys.add(encryptionKey);
+        decryptionKeys.add(decryptionKey);
         return this;
     }
 
@@ -66,7 +77,7 @@ public class DataProcessor {
         byte[] out = Arrays.clone(in);
         for (int i = 0; i < encryptors.size(); i++) {
             Encryptor encryptor = encryptors.get(i);
-            byte[] key = encryptorKeys.get(i);
+            byte[] key = encryptionKeys.get(i);
             out = encryptor.encrypt(out, key);
         }
         for (int i = 0; i < compressors.size(); i++) {
@@ -88,7 +99,7 @@ public class DataProcessor {
         }
         for (int i = encryptors.size() - 1; i >= 0; i--) {
             Encryptor encryptor = encryptors.get(i);
-            byte[] key = encryptorKeys.get(i);
+            byte[] key = decryptionKeys.get(i);
             out = encryptor.decrypt(out, key);
         }
         return out;
