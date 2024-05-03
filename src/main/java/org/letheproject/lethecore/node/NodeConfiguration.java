@@ -2,8 +2,8 @@ package org.letheproject.lethecore.node;
 
 public record NodeConfiguration(
         long shardSize,
-        long maxReceivingShardSize,
-        long bandwidthPeriod,
-        long bandwidthQuota,
-        long storageQuota
+        long bandwidthPeriodHours,
+        long bandwidthPerPeriod,
+        long shardStorageQuota,
+        String duplicationFormula
 ){}
