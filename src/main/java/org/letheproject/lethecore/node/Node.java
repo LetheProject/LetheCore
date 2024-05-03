@@ -16,4 +16,28 @@ public class Node {
         this.shardDAO = shardDAO;
         this.configuration = configuration;
     }
+
+    public IdentityDAO getIdentityDAO() {
+        return identityDAO;
+    }
+
+    public TrustDAO getTrustDAO() {
+        return trustDAO;
+    }
+
+    public KeyDAO getKeyDAO() {
+        return keyDAO;
+    }
+
+    public DataProcessorDAO getDataProcessorDAO() {
+        return dataProcessorDAO;
+    }
+
+    public ShardDAO getShardDAO() {
+        return shardDAO;
+    }
+
+    public NodeConfiguration getConfiguration() {
+        return configuration;
+    }
 }
