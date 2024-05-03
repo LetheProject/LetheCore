@@ -22,6 +22,8 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 
 	implementation 'org.bouncycastle:bcpkix-jdk18on:1.78'
+	// https://mvnrepository.com/artifact/org.bouncycastle/bcpg-jdk18on
+	implementation 'org.bouncycastle:bcpg-jdk18on:1.78'
 }
 
 tasks.named('test') {
