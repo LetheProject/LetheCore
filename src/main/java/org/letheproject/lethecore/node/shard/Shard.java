@@ -2,33 +2,55 @@ package org.letheproject.lethecore.node.shard;
 
 /**
  * Represents a processed fragment of a file.
+ * Contains both the public and private information of the shard.
+ * The private information is presumed to be encrypted by the owner and is unreadable by the network.
  */
-public class Shard {
-    private final ShardPrivateData privateData;
-    private final ShardPublicData publicData;
-    private final byte[] signature;
+public class Shard implements Comparable<Shard> {
+    private final ShardPublicData shardPublicData;
+    private final byte[] contents;
+    private final byte[] name;
+    private final byte[] virtualFilePath;
+    private final byte[] positionInOriginFile;
 
     /**
      * Instantiate a shard.
-     * @param privateData the private, or processed, data of the shard.
-     * @param publicData the public, non-processed, data of the shard.
-     * @param signature the owner's signature.
+     * @param shardPublicData the public information of the shard.
+     * @param contents the enciphered contents of the shard.
+     * @param name the enciphered name of the shard.
+     * @param virtualFilePath the enciphered virtual file path of the shard.
+     * @param positionInOriginFile the enciphered position of the shard in the origin file.
      */
-    public Shard(ShardPrivateData privateData, ShardPublicData publicData, byte[] signature) {
-        this.privateData = privateData;
-        this.publicData = publicData;
-        this.signature = signature;
+
+    public Shard(ShardPublicData shardPublicData, byte[] contents, byte[] name, byte[] virtualFilePath, byte[] positionInOriginFile) {
+        this.shardPublicData = shardPublicData;
+        this.contents = contents;
+        this.name = name;
+        this.virtualFilePath = virtualFilePath;
+        this.positionInOriginFile = positionInOriginFile;
     }
 
-    public ShardPrivateData getPrivateData() {
-        return privateData;
+    public ShardPublicData getShardPublicData() {
+        return shardPublicData;
     }
 
-    public ShardPublicData getPublicData() {
-        return publicData;
+    public byte[] getContents() {
+        return contents;
     }
 
-    public byte[] getSignature() {
-        return signature;
+    public byte[] getName() {
+        return name;
+    }
+
+    public byte[] getVirtualFilePath() {
+        return virtualFilePath;
+    }
+
+    public byte[] getPositionInOriginFile() {
+        return positionInOriginFile;
+    }
+
+    @Override
+    public int compareTo(Shard o) {
+        return (int) (shardPublicData.metadata().shardID() - o.shardPublicData.metadata().shardID());
     }
 }
