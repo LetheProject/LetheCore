@@ -1,6 +1,6 @@
 package org.letheproject.lethecore.api;
 
-import org.letheproject.lethecore.node.shard.Shard;
+import org.letheproject.lethecore.shard.Shard;
 
 /**
  * Represents the result of a shard storage, retrieval, deletion, or modification request.

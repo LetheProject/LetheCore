@@ -1,4 +1,4 @@
-package org.letheproject.lethecore.node.shard;
+package org.letheproject.lethecore.shard;
 
 /**
  * Represents the metadata of a shard.

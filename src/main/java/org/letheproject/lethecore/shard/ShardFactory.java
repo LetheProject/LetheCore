@@ -1,4 +1,4 @@
-package org.letheproject.lethecore.node.shard;
+package org.letheproject.lethecore.shard;
 
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPKeyPair;

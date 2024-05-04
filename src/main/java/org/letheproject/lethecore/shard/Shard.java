@@ -1,4 +1,4 @@
-package org.letheproject.lethecore.node.shard;
+package org.letheproject.lethecore.shard;
 
 /**
  * Represents a processed fragment of a file.
