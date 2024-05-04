@@ -3,9 +3,7 @@ package org.letheproject.lethecore.node.shard;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPKeyPair;
 import org.letheproject.lethecore.cryptography.encoding.Encoder;
-import org.letheproject.lethecore.cryptography.encoding.Hexadecimal;
 import org.letheproject.lethecore.cryptography.hashing.Hasher;
-import org.letheproject.lethecore.cryptography.hashing.SHA256;
 import org.letheproject.lethecore.cryptography.keys.PGPKeyService;
 
 import java.nio.charset.StandardCharsets;
