@@ -1,6 +1,8 @@
-package org.letheproject.lethecore.api;
+package org.letheproject.lethecore.api.network;
 
+import org.letheproject.lethecore.api.ShardRequestResult;
 import org.letheproject.lethecore.node.NodeIdentity;
+import org.letheproject.lethecore.node.TrustedNodeIdentity;
 import org.letheproject.lethecore.node.shard.Shard;
 import org.letheproject.lethecore.node.shard.ShardMetadata;
 
@@ -26,12 +28,11 @@ public interface NetworkService {
     boolean requestTrust(String targetIdentity);
 
     /**
-     * Request the target node's list of identities they directly trust.
-     * Used to determine indirect trust and to expand network access.
+     * Request the target node's list of identities they trust.
      * @param targetIdentity the target node's identities.
      * @return a list of node identities.
      */
-    List<NodeIdentity> requestTrusted(String targetIdentity);
+    List<TrustedNodeIdentity> requestTrusted(String targetIdentity);
 
     /**
      * Request that the target node store the provided shard.
