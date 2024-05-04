@@ -1,4 +1,4 @@
-package org.letheproject.lethecore.node;
+package org.letheproject.lethecore.node.dao;
 
 import org.letheproject.lethecore.dataprocessing.DataProcessor;
 

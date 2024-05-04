@@ -1,6 +1,6 @@
-package org.letheproject.lethecore.node;
+package org.letheproject.lethecore.node.dao;
 
-import org.letheproject.lethecore.node.shard.ShardMetadata;
+import org.letheproject.lethecore.shard.ShardMetadata;
 
 import java.util.List;
 
