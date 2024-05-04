@@ -9,6 +9,14 @@ public class MockConfigurationDAO implements ConfigurationDAO {
     private long shardQuota;
     private String duplicationFormula;
 
+    public MockConfigurationDAO(long shardSize, long bandwidthPeriodHours, long bandwidthPerPeriod, long shardQuota, String duplicationFormula) {
+        this.shardSize = shardSize;
+        this.bandwidthPeriodHours = bandwidthPeriodHours;
+        this.bandwidthPerPeriod = bandwidthPerPeriod;
+        this.shardQuota = shardQuota;
+        this.duplicationFormula = duplicationFormula;
+    }
+
     @Override
     public long getShardSize() {
         return shardSize;
