@@ -21,11 +21,20 @@ public class ShardRequestResult {
     private final int code;
     private final Shard shard;
 
+    /**
+     * Instantiate a shard request result.
+     * @param code the code of the result.
+     */
     public ShardRequestResult(int code) {
         this.code = code;
         this.shard = null;
     }
 
+    /**
+     * Instantiate a shard request result.
+     * @param code the code of the result.
+     * @param shard the shard encapsulated by the result.
+     */
     public ShardRequestResult(int code, Shard shard) {
         if (code != 0 && shard != null) {
             throw new RuntimeException("A ShardResultRequest cannot contain a shard and have failed");
@@ -34,22 +43,42 @@ public class ShardRequestResult {
         this.shard = shard;
     }
 
+    /**
+     * Determine if the result is a request success.
+     * @return the boolean result.
+     */
     public boolean succeeded() {
         return code == 0;
     }
 
+    /**
+     * Determine if the result is a request failure.
+     * @return the boolean result.
+     */
     public boolean failed() {
         return code != 0;
     }
 
+    /**
+     * Get the code for the result.
+     * @return the code.
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Determine if this encapsulates a shard.
+     * @return the boolean result.
+     */
     public boolean isEmpty() {
         return shard == null;
     }
 
+    /**
+     * Get the encapsulated shard.
+     * @return the shard.
+     */
     public Shard getShard() {
         return shard;
     }
