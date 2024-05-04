@@ -1,5 +1,7 @@
 package org.letheproject.lethecore.node;
 
+import org.letheproject.lethecore.node.dao.*;
+
 public class Node {
     private final IdentityDAO identityDAO;
     private final TrustDAO trustDAO;
@@ -7,16 +9,16 @@ public class Node {
     private final DataProcessorDAO dataProcessorDAO;
     private final ShardDAO shardDAO;
     private final ShardMetadataDAO shardMetadataDAO;
-    private final NodeConfiguration configuration;
+    private final ConfigurationDAO configurationDAO;
 
-    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, ShardMetadataDAO shardMetadataDAO, NodeConfiguration configuration) {
+    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, ShardMetadataDAO shardMetadataDAO, ConfigurationDAO configurationDAO) {
         this.identityDAO = identityDAO;
         this.trustDAO = trustDAO;
         this.keyDAO = keyDAO;
         this.dataProcessorDAO = dataProcessorDAO;
         this.shardDAO = shardDAO;
         this.shardMetadataDAO = shardMetadataDAO;
-        this.configuration = configuration;
+        this.configurationDAO = configurationDAO;
     }
 
     public IdentityDAO getIdentityDAO() {
@@ -43,7 +45,7 @@ public class Node {
         return shardMetadataDAO;
     }
 
-    public NodeConfiguration getConfiguration() {
-        return configuration;
+    public ConfigurationDAO getConfigurationDAO() {
+        return configurationDAO;
     }
 }
