@@ -6,14 +6,16 @@ public class Node {
     private final KeyDAO keyDAO;
     private final DataProcessorDAO dataProcessorDAO;
     private final ShardDAO shardDAO;
+    private final ShardMetadataDAO shardMetadataDAO;
     private final NodeConfiguration configuration;
 
-    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, NodeConfiguration configuration) {
+    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, ShardMetadataDAO shardMetadataDAO, NodeConfiguration configuration) {
         this.identityDAO = identityDAO;
         this.trustDAO = trustDAO;
         this.keyDAO = keyDAO;
         this.dataProcessorDAO = dataProcessorDAO;
         this.shardDAO = shardDAO;
+        this.shardMetadataDAO = shardMetadataDAO;
         this.configuration = configuration;
     }
 
@@ -35,6 +37,10 @@ public class Node {
 
     public ShardDAO getShardDAO() {
         return shardDAO;
+    }
+
+    public ShardMetadataDAO getShardMetadataDAO() {
+        return shardMetadataDAO;
     }
 
     public NodeConfiguration getConfiguration() {
