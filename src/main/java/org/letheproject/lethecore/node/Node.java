@@ -1,5 +1,6 @@
 package org.letheproject.lethecore.node;
 
+import org.letheproject.lethecore.cryptography.keys.PGPKeyService;
 import org.letheproject.lethecore.node.dao.*;
 
 public class Node {
@@ -10,8 +11,9 @@ public class Node {
     private final ShardDAO shardDAO;
     private final ShardMetadataDAO shardMetadataDAO;
     private final ConfigurationDAO configurationDAO;
+    private final PGPKeyService pgpKeyService;
 
-    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, ShardMetadataDAO shardMetadataDAO, ConfigurationDAO configurationDAO) {
+    public Node(IdentityDAO identityDAO, TrustDAO trustDAO, KeyDAO keyDAO, DataProcessorDAO dataProcessorDAO, ShardDAO shardDAO, ShardMetadataDAO shardMetadataDAO, ConfigurationDAO configurationDAO, PGPKeyService pgpKeyService) {
         this.identityDAO = identityDAO;
         this.trustDAO = trustDAO;
         this.keyDAO = keyDAO;
@@ -19,6 +21,7 @@ public class Node {
         this.shardDAO = shardDAO;
         this.shardMetadataDAO = shardMetadataDAO;
         this.configurationDAO = configurationDAO;
+        this.pgpKeyService = pgpKeyService;
     }
 
     public IdentityDAO getIdentityDAO() {
@@ -47,5 +50,9 @@ public class Node {
 
     public ConfigurationDAO getConfigurationDAO() {
         return configurationDAO;
+    }
+
+    public PGPKeyService getPgpKeyService() {
+        return pgpKeyService;
     }
 }
