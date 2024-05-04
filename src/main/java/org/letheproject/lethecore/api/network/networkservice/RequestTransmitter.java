@@ -9,13 +9,13 @@ import java.util.List;
 /**
  * Provides a service through which the node should make requests to its network.
  */
-public class NetworkService {
+public class RequestTransmitter {
     private Node node;
     private Request<NodeIdentity, String> identityRequest;
     private Request<Boolean, String> trustRequest;
     private Request<List<NodeIdentity>, String> trustedRequest;
 
-    public NetworkService(Node node, Request<NodeIdentity, String> identityRequest, Request<Boolean, String> trustRequest, Request<List<NodeIdentity>, String> trustedRequest) {
+    public RequestTransmitter(Node node, Request<NodeIdentity, String> identityRequest, Request<Boolean, String> trustRequest, Request<List<NodeIdentity>, String> trustedRequest) {
         this.node = node;
         this.identityRequest = identityRequest;
         this.trustRequest = trustRequest;
