@@ -29,12 +29,4 @@ public interface TrustDAO {
      * @param identity the identity of the node.
      */
     void setAsTrusted(String identity);
-
-    /**
-     * Get the shortest path, in terms of identities, from this node to the target node.
-     * The path must be of mutual trust.
-     * @param targetIdentity the identity of the target node.
-     * @return the shortest path.
-     */
-    List<String> shortestIdentityPath(String targetIdentity);
 }
