@@ -42,6 +42,36 @@ public class ShardFactory {
         return this;
     }
 
+    public ShardFactory setOwnerIdentity(String ownerIdentity) {
+        this.ownerIdentity = ownerIdentity;
+        return this;
+    }
+
+    public ShardFactory setDuplicationID(long duplicationID) {
+        this.duplicationID = duplicationID;
+        return this;
+    }
+
+    public ShardFactory setCreated(long created) {
+        this.created = created;
+        return this;
+    }
+
+    public ShardFactory setFileUUID(String fileUUID) {
+        this.fileUUID = fileUUID;
+        return this;
+    }
+
+    public ShardFactory setShardID(long shardID) {
+        this.shardID = shardID;
+        return this;
+    }
+
+    public ShardFactory setTransformationUUID(String transformationUUID) {
+        this.transformationUUID = transformationUUID;
+        return this;
+    }
+
     public Shard build(PGPKeyService keyService, PGPKeyPair keyPair) {
         Hexadecimal hex = new Hexadecimal();
         SHA256 sha256 = new SHA256();
