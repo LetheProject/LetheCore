@@ -22,11 +22,4 @@ public interface KeyDAO {
      * @param publicKey the updated public key.
      */
     void updatePublicKey(PGPPublicKey publicKey);
-
-    /**
-     * Get all encryption keys to be used by the node.
-     * The list of sorted by the order they will be used by DataProcessor.forward.
-     * @return the list of keys as byte arrays.
-     */
-    List<byte[]> getEncryptionKeys();
 }
