@@ -12,6 +12,9 @@ public class Shard implements Comparable<Shard> {
     private final byte[] virtualFilePath;
     private final byte[] positionInOriginFile;
 
+    private final long duplicationID;
+    private final long created;
+
     /**
      * Instantiate a shard.
      * @param shardPublicData the public information of the shard.

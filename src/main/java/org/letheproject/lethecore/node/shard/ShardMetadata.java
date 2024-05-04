@@ -10,7 +10,6 @@ package org.letheproject.lethecore.node.shard;
  * @param checksum
  */
 public record ShardMetadata(
-        String ownerIdentity,
         String fileUUID,
         long shardID,
         String transformationUUID,
