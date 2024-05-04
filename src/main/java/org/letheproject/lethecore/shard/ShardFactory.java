@@ -74,6 +74,8 @@ public class ShardFactory {
         return this;
     }
 
+
+
     /**
      * Build a shard from the set arguments.
      * @param encoder the encoder to use.

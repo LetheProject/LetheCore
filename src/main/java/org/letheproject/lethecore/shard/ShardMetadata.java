@@ -3,7 +3,6 @@ package org.letheproject.lethecore.shard;
 /**
  * Represents the metadata of a shard.
  * This is the information to be kept by the owner node.
- * @param ownerIdentity
  * @param fileUUID
  * @param shardID
  * @param transformationUUID
@@ -15,5 +14,9 @@ public record ShardMetadata(
         String transformationUUID,
         byte[] checksum
 ) {
+
+    public String getShardUUID() {
+        return String.format("%s-%d", fileUUID, shardID);
+    }
 
 }

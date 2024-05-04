@@ -25,10 +25,10 @@ public interface ShardDAO {
 
     /**
      * Get the UUIDs of all shards that have the owner with the provided UUID.
-     * @param uuid the UUID of the owner.
+     * @param ownerIdentity the identity of the owner.
      * @return the list of shard UUIDs.
      */
-    List<String> getShardsOfOwner(String uuid);
+    List<String> getShardsOfOwner(String ownerIdentity);
 
     /**
      * Remove the shard with the provided UUID.
@@ -51,10 +51,10 @@ public interface ShardDAO {
 
     /**
      * Get the number of bytes used by the provided owner.
-     * @param uuid the UUID of the owner.
+     * @param ownerIdentity the identity of the owner.
      * @return the space in bytes.
      */
-    long spaceUsedByOwner(String uuid);
+    long spaceUsedByOwner(String ownerIdentity);
 
     /**
      * Get the bandwidth, or space used since the provided date, by the provided owner.
@@ -69,10 +69,4 @@ public interface ShardDAO {
      * @return the number of bytes used.
      */
     long usedSpace();
-
-    /**
-     * Get the total number of bytes still free on disk to store shards.
-     * @return the number of bytes free.
-     */
-    long freeSpace();
 }
