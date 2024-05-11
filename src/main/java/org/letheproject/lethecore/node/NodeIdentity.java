@@ -9,11 +9,13 @@ public class NodeIdentity {
     private String identity;
     private PGPPublicKey publicKey;
     private List<PGPSignature> signatures;
+    private boolean isUserless;
 
-    public NodeIdentity(String identity, PGPPublicKey publicKey, List<PGPSignature> signatures) {
+    public NodeIdentity(String identity, PGPPublicKey publicKey, List<PGPSignature> signatures, boolean isUserless) {
         this.identity = identity;
         this.publicKey = publicKey;
         this.signatures = signatures;
+        this.isUserless = isUserless;
     }
 
     public String getIdentity() {
@@ -26,5 +28,9 @@ public class NodeIdentity {
 
     public List<PGPSignature> getSignatures() {
         return signatures;
+    }
+
+    public boolean isUserless() {
+        return isUserless;
     }
 }

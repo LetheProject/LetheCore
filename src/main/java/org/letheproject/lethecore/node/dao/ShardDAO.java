@@ -9,6 +9,8 @@ import java.util.Optional;
  * The interface for a shard data access object of a node.
  */
 public interface ShardDAO {
+    void dispose();
+
     /**
      * Determine if a shard with the provided UUID is being stored.
      * @param uuid the UUID of the shard.

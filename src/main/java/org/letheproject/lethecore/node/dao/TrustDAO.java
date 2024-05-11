@@ -29,4 +29,11 @@ public interface TrustDAO {
      * @param identity the identity of the node.
      */
     void setAsTrusted(String identity);
+
+    /**
+     * Check if the identity is known.
+     * @param identity the identity.
+     * @return true if it is known, false otherwise.
+     */
+    boolean isKnown(String identity);
 }

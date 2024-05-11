@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.letheproject.lethecore.compression.Deflate;
 import org.letheproject.lethecore.cryptography.encryption.AES256;
 import org.letheproject.lethecore.dataprocessing.DataProcessor;
+import org.letheproject.lethecore.shard.FileProcessor;
 
 import java.io.File;
 import java.io.FileOutputStream;

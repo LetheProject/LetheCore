@@ -16,6 +16,11 @@ public class MockShardDAO implements ShardDAO {
     }
 
     @Override
+    public void dispose() {
+
+    }
+
+    @Override
     public boolean containsShard(String uuid) {
         return shards.containsKey(uuid);
     }

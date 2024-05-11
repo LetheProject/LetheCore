@@ -26,6 +26,8 @@ dependencies {
 	implementation 'org.bouncycastle:bcpg-jdk18on:1.78'
 
 	implementation 'org.mariuszgromada.math:MathParser.org-mXparser:5.2.1'
+
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
 }
 
 tasks.named('test') {

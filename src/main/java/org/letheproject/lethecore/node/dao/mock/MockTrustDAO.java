@@ -47,4 +47,14 @@ public class MockTrustDAO implements TrustDAO {
         identities.remove(id);
         trusted.add(id);
     }
+
+    @Override
+    public boolean isKnown(String identity) {
+        for (NodeIdentity id : identities) {
+            if (identity.equals(id.getIdentity())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
